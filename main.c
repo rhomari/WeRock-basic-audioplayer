@@ -3,7 +3,6 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include <winuser.h>
-#include <commdlg.h>
 #include <processthreadsapi.h>
 #include <string.h>
 
@@ -19,13 +18,13 @@ DWORD WINAPI PlayMusic(LPVOID data){
     
    
     printf("Now playing %s\n",audiofile);
-    sprintf(command,"open %s type mpegvideo alias audiofile", audiofile); // constructing the command string
-     
+    sprintf(command,"open \"%s\" type mpegvideo alias audiofile", audiofile); // constructing the command string
+    printf("%s", command) ;
     mciSendString(command, NULL, 0, NULL ); //opening the media file
     mciSendString("play audiofile", NULL,0,NULL);//playing the file by its alias name
     int test = 1;
     MSG lpMsg; //Inter-Threads message handling
-    while (GetMessageA(&lpMsg, 0,0,0)){ //waiting for incoming message sent to the thread using its unique thread id
+    while (GetMessageA(&lpMsg, 0,0,0)){ //waiting for incoming messages sent to the thread using its unique thread id
         switch (lpMsg.message) //traiting the messages
         {
         case WM_APP + 1:
@@ -87,16 +86,7 @@ int main(int argcount, char* argvalues[]){
         printf("%s", "NO AUDIO FILE TO READ");
         return EXIT_FAILURE;
     }
-  
-    
-    
-        
-            
-           
-                
-        
-        
-
+   
     return EXIT_SUCCESS;
 }
 
