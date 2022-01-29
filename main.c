@@ -20,7 +20,7 @@ DWORD WINAPI PlayMusic(LPVOID data){
    
     printf("Now playing %s\n",audiofile);
     sprintf(command,"open \"%s\" type mpegvideo alias audiofile", audiofile); // constructing the command string
-    printf("%s", command) ;
+    
     mciSendString(command, NULL, 0, NULL ); //opening the media file
     mciSendString("play audiofile", NULL,0,NULL);//playing the file by its alias name
     int test = 1;
