@@ -8,7 +8,8 @@
 
 
 
-
+// run :
+// a.exe "filepath"
 
 
 DWORD WINAPI PlayMusic(LPVOID data){
