@@ -23,7 +23,7 @@ DWORD WINAPI PlayMusic(LPVOID data){
     
     mciSendString(command, NULL, 0, NULL ); //opening the media file
     mciSendString("play audiofile", NULL,0,NULL);//playing the file by its alias name
-    int test = 1;
+    
     MSG lpMsg; //Inter-Threads message handling
     while (GetMessageA(&lpMsg, 0,0,0)){ //waiting for incoming messages sent to the thread using its unique thread id
         switch (lpMsg.message) //traiting the messages
